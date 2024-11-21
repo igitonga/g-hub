@@ -96,13 +96,33 @@ const resolvers = {
 
             return newAuthor;
         },
+        async updateAuthor(_, args) {
+            let author = await authorsCollection.updateOne({_id: new ObjectId(args.id)}, {$set: {...args.author}});
+
+            return author;
+        },
+        async deleteAuthor(_, args) {
+            let author = await authorsCollection.deleteOne({_id: new ObjectId(args.id)})
+
+            return author;
+        },
 
         async addReview(_, args) {
             let newReview = {...args.review};
             await reviewsCollection.insertOne(newReview);
 
             return newReview;
-        }        
+        },
+        async updateReview(_, args) {
+            let review = await reviewsCollection.updateOne({_id: new ObjectId(args.id)}, {$set: {...args.review}});
+
+            return review;
+        },
+        async deleteReview(_, args) {
+            let review = await reviewsCollection.deleteOne({_id: new ObjectId(args.id)})
+
+            return review;
+        },        
     }
 }
 

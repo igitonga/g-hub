@@ -34,8 +34,12 @@ export const typeDefs = `#graphql
         updateGame(id: ID!, game: UpdateGameInput): Game
 
         addAuthor(author: AddAuthorInput): Author
+        updateAuthor(id: ID!, author: UpdateAuthorInput): Author
+        deleteAuthor(id: ID!): Author
 
         addReview(review: AddReviewInput): Review
+        updateReview(id: ID!, review: UpdateReviewInput): Review
+        deleteReview(id: ID!): Review
     }
     input AddGameInput {
         title: String!
@@ -49,10 +53,18 @@ export const typeDefs = `#graphql
         name: String!
         verified: Boolean!
     }
+    input UpdateAuthorInput {
+        name: String
+        verified: Boolean
+    }
     input AddReviewInput {
         rating: Int!
         content: String
         game_id: String!
         author_id: String!
+    }
+    input UpdateReviewInput {
+        rating: Int
+        content: String
     }
 `
