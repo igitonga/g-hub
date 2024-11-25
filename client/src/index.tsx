@@ -3,24 +3,29 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { InMemoryCache ,ApolloClient, ApolloProvider, createHttpLink } from "@apollo/client";
+import { ThemeProvider } from "@material-tailwind/react";
+import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@apollo/client';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(
+  document.getElementById('root') as HTMLElement
+);
 
-const link = createHttpLink({
-  uri: 'http://127.0.0.1:4000/'
+const uri = createHttpLink({
+  uri: "http://127.0.0.1:4000/"
 })
 
 const client = new ApolloClient({
+  link: uri,
   cache: new InMemoryCache(),
-  link: link
 });
 
 root.render(
   <React.StrictMode>
-    <ApolloProvider client={client}>
-      <App />
-    </ApolloProvider>
+    <ThemeProvider>
+      <ApolloProvider client={client}>
+        <App />
+      </ApolloProvider>
+    </ThemeProvider>
   </React.StrictMode>
 );
 
