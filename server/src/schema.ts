@@ -2,6 +2,8 @@ export const typeDefs = `#graphql
     type Game {
         id: ID!
         title: String!
+        description: String!
+        imageUrl: String!
         platform: [String!]!
         reviews: [Review!]
     }
@@ -43,6 +45,8 @@ export const typeDefs = `#graphql
     }
     input AddGameInput {
         title: String!
+        description: String!
+        imageUrl: String!
         platform: [String!]!
     }
     input UpdateGameInput {
