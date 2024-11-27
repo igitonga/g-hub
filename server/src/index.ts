@@ -55,6 +55,7 @@ const resolvers = {
         }
     },
     Game: {
+        id: (parent) => parent._id.toString(),
         reviews(parent) {
             return reviewsCollection.find({game_id: parent._id.toString()}).toArray();
         }

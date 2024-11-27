@@ -1,13 +1,22 @@
 import { useRef } from "react";
 import Modal from "./Modal";
 import { useMutation } from "@apollo/client";
-import { ADD_GAME, LIST_GAMES } from "../lib/api";
+import { ADD_GAME, LIST_GAMES } from "../lib/queries";
 import toast from "react-hot-toast";
 
 interface PropsType {
     openAddGameModal: boolean;
     setOpenAddGameModal: (open: boolean) => void;
 }
+
+interface Game {
+    id: string;
+    name: string;
+};
+
+interface ListGamesQueryResult {
+    games: Game[];
+};
 
 const AddGameModal = (props: PropsType) => {
     const titleRef = useRef<HTMLInputElement | null>(null); 
@@ -20,9 +29,19 @@ const AddGameModal = (props: PropsType) => {
             toast.success("Game has been added");
             handleCloseModal();
         },
-        refetchQueries: [
-            { query: LIST_GAMES }
-        ],
+        update: (cache, { data: { addGame } }) => {
+            // Type the result of readQuery
+            const existingGames = cache.readQuery<ListGamesQueryResult>({ query: LIST_GAMES });
+            
+            if (existingGames) {
+                cache.writeQuery({
+                    query: LIST_GAMES,
+                    data: {
+                        games: [...existingGames.games, addGame], // Add the new game to the list
+                    },
+                });
+            }
+        },
         onError: (error) => {
             toast.error("Failed to add game");
         }
