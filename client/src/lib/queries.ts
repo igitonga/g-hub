@@ -6,7 +6,7 @@ export const LIST_GAMES = gql`
       id,
       title,
       description,
-      imageUrl
+      imageUrl,
       reviews {
         rating
       }

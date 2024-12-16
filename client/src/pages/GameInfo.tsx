@@ -14,6 +14,7 @@ interface Game {
     reviews: Review[];
     imageUrl: string;
     description: string;
+    platform: [string];
 }
 
 const GameInfo = () => {
@@ -51,8 +52,13 @@ const GameInfo = () => {
                         <hr style={{ height: '2px', backgroundColor: 'black', border: 'none' }}/>
                         <p className="mt-4">{game?.description}</p>
                     </div>
-                    <div className="">
+                    <div>
                         <h1 className="font-bold text-4xl">{game?.title}</h1>
+                        <div className="mt-3">
+                            {game?.platform.map(g => 
+                                <span className="bg-gray-200 py-1.5 px-3 rounded-md mr-1.5 font-bold text-gray-700">{g}</span>
+                            )}
+                        </div>
                     </div>               
                 </div>
             )}
