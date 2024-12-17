@@ -558,14 +558,57 @@ __turbopack_esm__({
     "default": (()=>Home)
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/react/jsx-dev-runtime.js [client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$graphql$2d$tag$2f$lib$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/graphql-tag/lib/index.js [client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$apollo$2f$client$2f$react$2f$hooks$2f$useQuery$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/@apollo/client/react/hooks/useQuery.js [client] (ecmascript)");
 ;
-function Home() {
-    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {}, void 0, false, {
-        fileName: "[project]/src/pages/index.tsx",
-        lineNumber: 5,
-        columnNumber: 5
-    }, this);
+var _s = __turbopack_refresh__.signature();
+;
+const GET_COUNTRIES = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$graphql$2d$tag$2f$lib$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["gql"]`
+query Countries {
+  countries {
+    code
+    name
+  }
 }
+`;
+function Home() {
+    _s();
+    const { data, loading, error } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$apollo$2f$client$2f$react$2f$hooks$2f$useQuery$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useQuery"])(GET_COUNTRIES);
+    if (loading) return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+        children: "loading.."
+    }, void 0, false, {
+        fileName: "[project]/src/pages/index.tsx",
+        lineNumber: 25,
+        columnNumber: 12
+    }, this);
+    if (error) return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+        children: error.message
+    }, void 0, false, {
+        fileName: "[project]/src/pages/index.tsx",
+        lineNumber: 27,
+        columnNumber: 12
+    }, this);
+    if (data) {
+        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+            children: data.countries.map((country)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                    children: country.name
+                }, void 0, false, {
+                    fileName: "[project]/src/pages/index.tsx",
+                    lineNumber: 32,
+                    columnNumber: 40
+                }, this))
+        }, void 0, false, {
+            fileName: "[project]/src/pages/index.tsx",
+            lineNumber: 31,
+            columnNumber: 7
+        }, this);
+    }
+}
+_s(Home, "RsAoF0jGW8x/4pnnopXB/YWtfZ8=", false, function() {
+    return [
+        __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$apollo$2f$client$2f$react$2f$hooks$2f$useQuery$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useQuery"]
+    ];
+});
 _c = Home;
 var _c;
 __turbopack_refresh__.register(_c, "Home");

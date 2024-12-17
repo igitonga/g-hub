@@ -310,14 +310,9 @@ const server = new __TURBOPACK__imported__module__$5b$externals$5d2f40$apollo$2f
     typeDefs: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$pages$2f$api$2f$schema$2e$ts__$5b$api$5d$__$28$ecmascript$29$__["typeDefs"],
     resolvers
 });
-async (req, res)=>{
-    if (req.method === "OPTIONS") {
-        res.end();
-        return false;
-    }
-    const serverStart = await server.start();
+const serverStart = await server.start().then(()=>{
     console.log(serverStart);
-};
+});
 __turbopack_async_result__();
 } catch(e) { __turbopack_async_result__(e); } }, true);}),
 "[project]/node_modules/next/dist/esm/server/route-modules/pages-api/module.compiled.js [api] (ecmascript)": (function(__turbopack_context__) {

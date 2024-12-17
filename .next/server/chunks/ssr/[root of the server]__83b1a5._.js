@@ -27,14 +27,14 @@ __turbopack_esm__({
 var __TURBOPACK__imported__module__$5b$externals$5d2f40$apollo$2f$client__$5b$external$5d$__$2840$apollo$2f$client$2c$__cjs$29$__ = __turbopack_import__("[externals]/@apollo/client [external] (@apollo/client, cjs)");
 ;
 const httpLink = new __TURBOPACK__imported__module__$5b$externals$5d2f40$apollo$2f$client__$5b$external$5d$__$2840$apollo$2f$client$2c$__cjs$29$__["HttpLink"]({
-    uri: 'http://localhost:3000/graphql',
+    uri: 'http://localhost:3000/api/graphql',
     credentials: 'same-origin'
 });
-const client = new __TURBOPACK__imported__module__$5b$externals$5d2f40$apollo$2f$client__$5b$external$5d$__$2840$apollo$2f$client$2c$__cjs$29$__["ApolloClient"]({
+const apolloClient = new __TURBOPACK__imported__module__$5b$externals$5d2f40$apollo$2f$client__$5b$external$5d$__$2840$apollo$2f$client$2c$__cjs$29$__["ApolloClient"]({
     link: httpLink,
     cache: new __TURBOPACK__imported__module__$5b$externals$5d2f40$apollo$2f$client__$5b$external$5d$__$2840$apollo$2f$client$2c$__cjs$29$__["InMemoryCache"]()
 });
-const __TURBOPACK__default__export__ = client;
+const __TURBOPACK__default__export__ = apolloClient;
 }}),
 "[project]/src/lib/apolloProvider.tsx [ssr] (ecmascript)": ((__turbopack_context__) => {
 "use strict";

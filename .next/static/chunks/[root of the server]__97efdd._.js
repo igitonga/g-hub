@@ -562,14 +562,14 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$apollo$2f$
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$apollo$2f$client$2f$cache$2f$inmemory$2f$inMemoryCache$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/@apollo/client/cache/inmemory/inMemoryCache.js [client] (ecmascript)");
 ;
 const httpLink = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$apollo$2f$client$2f$link$2f$http$2f$HttpLink$2e$js__$5b$client$5d$__$28$ecmascript$29$__["HttpLink"]({
-    uri: 'http://localhost:3000/graphql',
+    uri: 'http://localhost:3000/api/graphql',
     credentials: 'same-origin'
 });
-const client = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$apollo$2f$client$2f$core$2f$ApolloClient$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["ApolloClient"]({
+const apolloClient = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$apollo$2f$client$2f$core$2f$ApolloClient$2e$js__$5b$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["ApolloClient"]({
     link: httpLink,
     cache: new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$apollo$2f$client$2f$cache$2f$inmemory$2f$inMemoryCache$2e$js__$5b$client$5d$__$28$ecmascript$29$__["InMemoryCache"]()
 });
-const __TURBOPACK__default__export__ = client;
+const __TURBOPACK__default__export__ = apolloClient;
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_refresh__.registerExports(module, globalThis.$RefreshHelpers$);
 }

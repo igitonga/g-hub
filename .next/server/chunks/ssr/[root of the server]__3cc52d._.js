@@ -118,11 +118,11 @@ const httpLink = new __TURBOPACK__imported__module__$5b$externals$5d2f40$apollo$
     uri: 'http://localhost:3000/graphql',
     credentials: 'same-origin'
 });
-const client = new __TURBOPACK__imported__module__$5b$externals$5d2f40$apollo$2f$client__$5b$external$5d$__$2840$apollo$2f$client$2c$__cjs$29$__["ApolloClient"]({
-    link: httpLink,
+const apolloClient = new __TURBOPACK__imported__module__$5b$externals$5d2f40$apollo$2f$client__$5b$external$5d$__$2840$apollo$2f$client$2c$__cjs$29$__["ApolloClient"]({
+    uri: "https://countries.trevorblades.com",
     cache: new __TURBOPACK__imported__module__$5b$externals$5d2f40$apollo$2f$client__$5b$external$5d$__$2840$apollo$2f$client$2c$__cjs$29$__["InMemoryCache"]()
 });
-const __TURBOPACK__default__export__ = client;
+const __TURBOPACK__default__export__ = apolloClient;
 }}),
 "[project]/src/lib/apolloProvider.tsx [ssr] (ecmascript)": ((__turbopack_context__) => {
 "use strict";
@@ -188,13 +188,48 @@ __turbopack_esm__({
     "default": (()=>Home)
 });
 var __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__ = __turbopack_import__("[externals]/react/jsx-dev-runtime [external] (react/jsx-dev-runtime, cjs)");
+var __TURBOPACK__imported__module__$5b$externals$5d2f40$apollo$2f$client__$5b$external$5d$__$2840$apollo$2f$client$2c$__cjs$29$__ = __turbopack_import__("[externals]/@apollo/client [external] (@apollo/client, cjs)");
 ;
+;
+const GET_COUNTRIES = __TURBOPACK__imported__module__$5b$externals$5d2f40$apollo$2f$client__$5b$external$5d$__$2840$apollo$2f$client$2c$__cjs$29$__["gql"]`
+query Countries {
+  countries {
+    code
+    name
+  }
+}
+`;
 function Home() {
-    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {}, void 0, false, {
+    const { data, loading, error } = (0, __TURBOPACK__imported__module__$5b$externals$5d2f40$apollo$2f$client__$5b$external$5d$__$2840$apollo$2f$client$2c$__cjs$29$__["useQuery"])(GET_COUNTRIES);
+    if (loading) return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("p", {
+        children: "loading.."
+    }, void 0, false, {
         fileName: "[project]/src/pages/index.tsx",
-        lineNumber: 5,
-        columnNumber: 5
+        lineNumber: 25,
+        columnNumber: 12
     }, this);
+    if (error) return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("p", {
+        children: error.message
+    }, void 0, false, {
+        fileName: "[project]/src/pages/index.tsx",
+        lineNumber: 27,
+        columnNumber: 12
+    }, this);
+    if (data) {
+        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
+            children: data.countries.map((country)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("p", {
+                    children: country.name
+                }, void 0, false, {
+                    fileName: "[project]/src/pages/index.tsx",
+                    lineNumber: 32,
+                    columnNumber: 40
+                }, this))
+        }, void 0, false, {
+            fileName: "[project]/src/pages/index.tsx",
+            lineNumber: 31,
+            columnNumber: 7
+        }, this);
+    }
 }
 }}),
 
