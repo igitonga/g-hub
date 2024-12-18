@@ -1,7 +1,12 @@
 import { Toaster } from "react-hot-toast";
 import Link from "next/link";
+import { ReactNode, FC } from "react";
 
-const Navbar = () => {
+interface ChildrenData {
+    children: ReactNode;
+}
+
+const Layout: FC<ChildrenData> = ({children}) => {
     return (
         <div>
             <nav className='flex justify-between bg-black py-3 px-10'>
@@ -24,9 +29,10 @@ const Navbar = () => {
             </nav>
             <main className="px-10 py-5">
                 <Toaster />
+                {children}
             </main>
         </div>
     )
 }
 
-export default Navbar;
+export default Layout;

@@ -3,5 +3,5 @@
   "/_document": "pages/_document.js",
   "/": "pages/index.js",
   "/api/graphql": "pages/api/graphql.js",
-  "/_error": "pages/_error.js"
+  "/game/[id]": "pages/game/[id].js"
 }

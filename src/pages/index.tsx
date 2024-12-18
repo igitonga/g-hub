@@ -4,7 +4,7 @@ import { LIST_GAMES } from "@/lib/queries";
 import AddGameModal from "@/components/AddGameModal";
 import GameCard from "@/components/GameCard";
 import { truncateString } from "@/helpers";
-import Navbar from "@/components/Navbar";
+import Layout from "@/components/Layout";
 interface Review {
   rating: number; // Adjust the type as necessary
 }
@@ -25,13 +25,17 @@ export default function Home() {
   const {data, loading, error} = useQuery<GamesData>(LIST_GAMES);
   const [openAddGameModal, setOpenAddGameModal] = useState(false);
 
-  if(loading)
-    return <p>loading..</p>  
+  if(loading){
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <p>Loading....</p>
+      </div>
+    );
+  }  
 
   if(data){
     return (
-      <div>
-        <Navbar />
+      <Layout>
         <div className='flex justify-between items-center mb-2'>
           <div>
             <button type="button" className="text-white bg-black hover:bg-gray-900 focus:outline-non font-medium rounded-lg text-sm px-5 py-2.5 me-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
@@ -62,7 +66,7 @@ export default function Home() {
               description={truncateString(game.description)} />
           )}
         </div>
-      </div>
+      </Layout>
     );
   }
 
