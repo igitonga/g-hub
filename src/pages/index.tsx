@@ -1,74 +1,25 @@
-import { useState } from "react";
-import { gql, useQuery } from "@apollo/client";
-import { LIST_GAMES } from "@/lib/queries";
-import AddGameModal from "@/components/AddGameModal";
-import GameCard from "@/components/GameCard";
-import { truncateString } from "@/helpers";
-import Layout from "@/components/Layout";
-interface Review {
-  rating: number; // Adjust the type as necessary
-}
+import Link from "next/link";
+import Image from "next/image";
 
-interface Game {
-  id: string;
-  title: string;
-  reviews: Review[];
-  imageUrl: string;
-  description: string;
-}
-
-interface GamesData {
-  games: Game[]
-}
-
-export default function Home() {
-  const {data, loading, error} = useQuery<GamesData>(LIST_GAMES);
-  const [openAddGameModal, setOpenAddGameModal] = useState(false);
-
-  if(loading){
+export default function Index() {
     return (
-      <div className="flex items-center justify-center h-screen">
-        <p>Loading....</p>
-      </div>
-    );
-  }  
-
-  if(data){
-    return (
-      <Layout>
-        <div className='flex justify-between items-center mb-2'>
-          <div>
-            <button type="button" className="text-white bg-black hover:bg-gray-900 focus:outline-non font-medium rounded-lg text-sm px-5 py-2.5 me-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
-            onClick={() => setOpenAddGameModal(true)}>
-              Add Game
-            </button>
-          </div>
-        </div>
-      
-        <AddGameModal openAddGameModal={openAddGameModal} setOpenAddGameModal={setOpenAddGameModal}/>
-
-        {error && (
-          <div className="flex items-center justify-center mt-12">
-            <div className='font-bold'>
-              {`Try refreshing page there was an error`}
+        <div className="flex items-center justify-center h-screen bg-black overflow-hidden box-shad"
+            style={{
+                boxShadow: 'inset 0 -30px 70px rgba(0, 20, 128, 0.5)',
+            }}
+        >
+            <div className="w-6/12 text-center">
+                <div className="absolute w-2/4 top-20">
+                    <p className="text-4xl text-white font-bold mb-10">Your Ultimate Gaming Hub</p>
+                    <p className="text-white mb-8">
+                            Dive into the world of gaming like never before! At G-Hub, we bring you in-depth reviews, expert insights, 
+                            and the latest news from the gaming universe. Whether you're a casual player or a hardcore gamer, our platform 
+                            is your one-stop destination.
+                    </p>
+                    <Link href="/games" className="bg-white px-6 py-3 rounded-3xl text-black hover:bg-gray-100">See Reviews</Link>
+                </div>
+                <Image src="/hero_bg.png" alt="hero" width={800} height={400} className="relative top-40" />
             </div>
-          </div>
-        )}
-
-        <div className="grid grid-cols-6 gap-4">
-          {data.games.length > 0 && data.games.map(game => 
-            <GameCard
-              key={game.id} 
-              id={game.id}
-              title={game.title}
-              rating={game.reviews[0]?.rating}
-              imageUrl={game.imageUrl}
-              description={truncateString(game.description)} />
-          )}
         </div>
-      </Layout>
     );
-  }
-
 }
-
