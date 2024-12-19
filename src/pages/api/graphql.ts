@@ -2,7 +2,7 @@ import { ApolloServer } from "@apollo/server";
 import { startServerAndCreateNextHandler } from "@as-integrations/next";
 import { NextRequest } from "next/server";
 import client from "@/lib/mongodb";
-import { ObjectId } from "mongodb";
+import { ObjectId, Collection, Document } from "mongodb";
 import { typeDefs } from "./schema";
 
 let db = null;
@@ -15,9 +15,9 @@ try {
     console.error(`Database connection error: ${error}`);
 }
 
-let gamesCollection: any;
-let authorsCollection: any;
-let reviewsCollection: any;
+let gamesCollection: Collection<Document>;
+let authorsCollection: Collection<Document>;
+let reviewsCollection: Collection<Document>;
 
 if(db !== null){
     gamesCollection = db.collection('games');
@@ -87,7 +87,7 @@ const resolvers = {
     },
     Game: {
         id: (parent: {_id: string}) => parent._id.toString(),
-        reviews(parent: any) {
+        reviews(parent: {_id: string}) {
             return reviewsCollection.find({game_id: parent._id.toString()}).toArray();
         }
     },
