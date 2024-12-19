@@ -57,8 +57,8 @@ const GameInfo = () => {
                     <div>
                         <h1 className="font-bold text-4xl">{data.game?.title}</h1>
                         <div className="mt-3">
-                            {data.game?.platform.map(g => 
-                                <span className="bg-gray-200 py-1.5 px-3 rounded-md mr-1.5 font-bold text-gray-700">{g}</span>
+                            {data.game?.platform.map((g, index) => 
+                                <span key={index} className="bg-gray-200 py-1.5 px-3 rounded-md mr-1.5 font-bold text-gray-700">{g}</span>
                             )}
                         </div>
                     </div>               

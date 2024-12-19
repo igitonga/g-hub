@@ -25,6 +25,33 @@ if(db !== null){
     reviewsCollection = db.collection('reviews');
 }
 
+interface GameInput {
+    id: string;
+    game: {
+        title: string;
+        platform: string[];
+        imageUrl: string;
+        description: string;
+    }
+}
+
+interface AuthorInput {
+    id: string;
+    author: {
+        name: string;
+    }
+}
+
+interface ReviewInput {
+    id: string;
+    review: {
+        rating: number;
+        content: string;
+        game_id: string;
+        author_id: string;
+    }
+}
+
 const resolvers = {
     Query: {
         async games() { 
@@ -32,7 +59,7 @@ const resolvers = {
 
             return allGames;
         },
-        async game(_: unknown, args: any) {
+        async game(_: unknown, args: {id: string}) {
             const game = await gamesCollection.findOne({ _id: new ObjectId(args.id) }); 
             
             return game;
@@ -42,7 +69,7 @@ const resolvers = {
 
             return allAuthors;
         },
-        async author(_: unknown, args: any) {
+        async author(_: unknown, args: {id: string}) {
             const author = await authorsCollection.findOne({ _id: new ObjectId(args.id) }); 
 
             return author;
@@ -52,79 +79,79 @@ const resolvers = {
 
             return allReviews;
         },
-        async review(_: unknown, args: any) {
+        async review(_: unknown, args: {id: string}) {
             const review = await reviewsCollection.findOne({ _id: new ObjectId(args.id) }); 
 
             return review;
         }
     },
     Game: {
-        id: (parent: any) => parent._id.toString(),
+        id: (parent: {_id: string}) => parent._id.toString(),
         reviews(parent: any) {
             return reviewsCollection.find({game_id: parent._id.toString()}).toArray();
         }
     },
     Author: {
-        reviews(parent: any) {
+        reviews(parent: {_id: string}) {
             return reviewsCollection.find({author_id: parent._id.toString()}).toArray();
         }
     },
     Review : {
-        author(parent: any) {
+        author(parent: {author_id: string}) {
             return authorsCollection.findOne({_id: new ObjectId(parent.author_id)});
         },
-        game(parent: any) {
+        game(parent: {game_id: string}) {
             return gamesCollection.findOne({_id: new ObjectId(parent.game_id)});
         }
     },
     Mutation: {
-        async addGame(_: unknown, args: any) {
-            let newGame = {...args.game};
+        async addGame(_: unknown, args: GameInput) {
+            const newGame = {...args.game};
             await gamesCollection.insertOne(newGame);
 
             return newGame;
         },
-        async deleteGame(_: unknown, args: any) {
-            let deleteGame = await gamesCollection.deleteOne({_id: new ObjectId(args.id)});
+        async deleteGame(_: unknown, args: {id: string}) {
+            const deleteGame = await gamesCollection.deleteOne({_id: new ObjectId(args.id)});
 
             return deleteGame;
         },
-        async updateGame(_: unknown, args: any) {
-            let game = await gamesCollection.updateOne({_id: new ObjectId(args.id)},{$set: {...args.game}});
+        async updateGame(_: unknown, args: GameInput) {
+            const game = await gamesCollection.updateOne({_id: new ObjectId(args.id)},{$set: {...args.game}});
 
             return game;
         },
 
-        async addAuthor(_: unknown, args: any) {
-            let newAuthor = {...args.author}
+        async addAuthor(_: unknown, args: AuthorInput) {
+            const newAuthor = {...args.author}
             await authorsCollection.insertOne(newAuthor);
 
             return newAuthor;
         },
-        async updateAuthor(_: unknown, args: any) {
-            let author = await authorsCollection.updateOne({_id: new ObjectId(args.id)}, {$set: {...args.author}});
+        async updateAuthor(_: unknown, args: AuthorInput) {
+            const author = await authorsCollection.updateOne({_id: new ObjectId(args.id)}, {$set: {...args.author}});
 
             return author;
         },
-        async deleteAuthor(_: unknown, args: any) {
-            let author = await authorsCollection.deleteOne({_id: new ObjectId(args.id)})
+        async deleteAuthor(_: unknown, args: {id: string}) {
+            const author = await authorsCollection.deleteOne({_id: new ObjectId(args.id)})
 
             return author;
         },
 
-        async addReview(_: unknown, args: any) {
-            let newReview = {...args.review};
+        async addReview(_: unknown, args: ReviewInput) {
+            const newReview = {...args.review};
             await reviewsCollection.insertOne(newReview);
 
             return newReview;
         },
-        async updateReview(_: unknown, args: any) {
-            let review = await reviewsCollection.updateOne({_id: new ObjectId(args.id)}, {$set: {...args.review}});
+        async updateReview(_: unknown, args: ReviewInput) {
+            const review = await reviewsCollection.updateOne({_id: new ObjectId(args.id)}, {$set: {...args.review}});
 
             return review;
         },
-        async deleteReview(_: unknown, args: any) {
-            let review = await reviewsCollection.deleteOne({_id: new ObjectId(args.id)})
+        async deleteReview(_: unknown, args: {id: string}) {
+            const review = await reviewsCollection.deleteOne({_id: new ObjectId(args.id)})
 
             return review;
         },        
