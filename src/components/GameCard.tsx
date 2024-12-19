@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-
+import Image from 'next/image'
 interface PropsType {
     title: string;
     rating: number;
@@ -17,7 +17,9 @@ const GameCard = (props: PropsType) => {
 
     return (
         <div className="max-w-sm rounded overflow-hidden shadow-lg cursor-pointer" onClick={() => handleRedirectToGame(props.id)}>
-            <img className="w-full" src={props.imageUrl} style={{ height: '200px', objectFit: 'cover' }} alt="Game's poster"/>
+            <div className='relative' style={{ height: '180px' }}>
+                <Image className="object-cover" src={props.imageUrl} fill alt="Game's poster"/>
+            </div>
             <div className="px-4 py-2">
                 <div className="font-bold text-lg">{props.title}</div>
             </div>

@@ -4,7 +4,7 @@ import { useQuery } from "@apollo/client"
 import toast from "react-hot-toast";
 import { useRouter } from "next/router";
 import Layout from "@/components/Layout";
-
+import Image from "next/image";
 interface Review {
     rating: number;
 }
@@ -46,8 +46,10 @@ const GameInfo = () => {
         <Layout >
             {data && (
                 <div className="grid grid-cols-2 gap-4">
-                    <div className="">
-                        <img className="rounded-md" style={{ height: '400px', objectFit: 'cover' }} src={data.game?.imageUrl} alt="Game Poster"/>
+                    <div>
+                        <div className="relative" style={{ height: '400px' }}>
+                            <Image className="rounded-md object-cover" fill src={data.game?.imageUrl} alt="Game Poster"/>
+                        </div>
                         <h1 className="mt-4 font-bold text-lg">Description</h1>
                         <hr style={{ height: '2px', backgroundColor: 'black', border: 'none' }}/>
                         <p className="mt-4">{data.game?.description}</p>

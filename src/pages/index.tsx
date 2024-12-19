@@ -13,7 +13,7 @@ export default function Index() {
                     <p className="text-4xl text-white font-bold mb-10">Your Ultimate Gaming Hub</p>
                     <p className="text-white mb-8">
                             Dive into the world of gaming like never before! At G-Hub, we bring you in-depth reviews, expert insights, 
-                            and the latest news from the gaming universe. Whether you're a casual player or a hardcore gamer, our platform 
+                            and the latest news from the gaming universe. Whether you&apos;re a casual player or a hardcore gamer, our platform 
                             is your one-stop destination.
                     </p>
                     <Link href="/games" className="bg-white px-6 py-3 rounded-3xl text-black hover:bg-gray-100">See Reviews</Link>

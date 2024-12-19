@@ -43,7 +43,7 @@ const AddGameModal = (props: PropsType) => {
             }
         },
         onError: (error) => {
-            toast.error("Failed to add game");
+            toast.error(`Failed to add game. ${error.message}`);
         }
     });
 

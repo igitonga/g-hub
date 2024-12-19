@@ -10,7 +10,7 @@ const Layout: FC<ChildrenData> = ({children}) => {
     return (
         <div>
             <nav className='flex justify-between bg-black py-3 px-10'>
-                <Link href='/' className="text-center text-3xl font-bold text-white">Games Review</Link>
+                <Link href='/games' className="text-center text-3xl font-bold text-white">Games Review</Link>
                 <div className='flex'>
                 <div className='mr-3'>
                     <form className="max-w-md mx-auto">   
