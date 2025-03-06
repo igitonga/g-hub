@@ -12,6 +12,8 @@ export default function Index() {
                     src="https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&q=80&w=2070"
                     alt="Gaming Setup"
                     className="w-full h-full object-cover opacity-20"
+                    width={800} 
+                    height={400}
                 />
                 </div>
                 <nav className="relative z-10 container mx-auto px-6 py-4">
@@ -119,7 +121,13 @@ export default function Index() {
                     }
                 ].map((game, index) => (
                     <div key={index} className="bg-gray-800 rounded-xl overflow-hidden">
-                    <Image src={game.image} alt={game.title} className="w-full h-48 object-cover" />
+                    <Image 
+                    src={game.image} 
+                    alt={game.title} 
+                    className="w-full h-48 object-cover" 
+                    width={800} 
+                    height={400}
+                    />
                     <div className="p-6">
                         <h3 className="text-xl font-bold text-white mb-2">{game.title}</h3>
                         <div className="flex items-center justify-between">

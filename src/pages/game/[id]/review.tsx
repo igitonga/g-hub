@@ -30,9 +30,11 @@ const Review = () => {
                 <div className="bg-gray-800 rounded-xl p-6 mb-8">
                 <div className="flex items-center mb-6">
                     <Image
-                    src="https://images.unsplash.com/photo-1642176849879-92f85770f212?auto=format&fit=crop&q=80&w=1650"
-                    alt="Game"
-                    className="w-24 h-24 object-cover rounded-lg mr-4"
+                        src="https://images.unsplash.com/photo-1642176849879-92f85770f212?auto=format&fit=crop&q=80&w=1650"
+                        alt="Game"
+                        className="w-24 h-24 object-cover rounded-lg mr-4"
+                        width={800} 
+                        height={400}
                     />
                     <div>
                     <h2 className="text-xl font-bold text-white">The Legend of Zelda: Tears of the Kingdom</h2>

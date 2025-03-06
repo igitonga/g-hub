@@ -92,6 +92,8 @@ const GameInfo = () => {
                     src={data?.game.imageUrl ?? 'https://images.unsplash.com/photo-1642176849879-92f85770f212?auto=format&fit=crop&q=80&w=1650'} 
                     alt={data?.game.title ?? 'Game'}
                     className="w-full h-[400px] object-cover"
+                    width={800} 
+                    height={400}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/50 to-transparent">
                     <div className="absolute bottom-0 left-0 right-0 p-8">
@@ -182,6 +184,8 @@ const GameInfo = () => {
                            src={screenshot}
                            alt={`Screenshot ${index + 1}`}
                            className="rounded-xl w-full h-48 object-cover hover:opacity-75 transition cursor-pointer"
+                           width={800} 
+                           height={400}
                          />
                        ))}
                      </div>
@@ -269,7 +273,7 @@ const GameInfo = () => {
                    </div>
        
                    {/* Similar Games */}
-                   <div className="bg-gray-800 rounded-xl p-6">
+                   {/* <div className="bg-gray-800 rounded-xl p-6">
                      <h3 className="text-lg font-bold text-white mb-4">Similar Games</h3>
                      <div className="space-y-4">
                        {[1, 2, 3].map((_, index) => (
@@ -278,6 +282,8 @@ const GameInfo = () => {
                              src={`https://images.unsplash.com/photo-${index + 1}?auto=format&fit=crop&q=80&w=150`}
                              alt="Similar Game"
                              className="w-20 h-20 object-cover rounded-lg"
+                             width={800} 
+                             height={400}
                            />
                            <div>
                              <div className="text-white font-semibold mb-1">Similar Game {index + 1}</div>
@@ -289,7 +295,7 @@ const GameInfo = () => {
                          </div>
                        ))}
                      </div>
-                   </div>
+                   </div> */}
                  </div>
                </div>
 
