@@ -5,7 +5,8 @@ import toast from "react-hot-toast";
 import { useRouter } from "next/router";
 import Layout from "@/components/Layout";
 import Link from "next/link";
-import { TowerControl as GameController, Search, Star, Heart, Share2, Trophy, Clock, Gamepad2, Users, MessageSquare, ThumbsUp, Award } from 'lucide-react';
+import Image from "next/image";
+import { Star, Heart, Share2, Trophy, Clock, Users, MessageSquare, ThumbsUp, Award } from 'lucide-react';
 interface Review {
     rating: number;
 }
@@ -87,9 +88,9 @@ const GameInfo = () => {
     return (
         <Layout >
             <div className="relative rounded-xl overflow-hidden mb-8">
-                <img 
-                    src={data?.game.imageUrl} 
-                    alt={data?.game.title}
+                <Image 
+                    src={data?.game.imageUrl ?? 'https://images.unsplash.com/photo-1642176849879-92f85770f212?auto=format&fit=crop&q=80&w=1650'} 
+                    alt={data?.game.title ?? 'Game'}
                     className="w-full h-[400px] object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/50 to-transparent">
@@ -176,7 +177,7 @@ const GameInfo = () => {
                      <h2 className="text-xl font-bold text-white mb-4">Screenshots</h2>
                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                        {gameDetails.screenshots.map((screenshot, index) => (
-                         <img 
+                         <Image 
                            key={index}
                            src={screenshot}
                            alt={`Screenshot ${index + 1}`}
@@ -273,7 +274,7 @@ const GameInfo = () => {
                      <div className="space-y-4">
                        {[1, 2, 3].map((_, index) => (
                          <div key={index} className="flex space-x-4">
-                           <img
+                           <Image
                              src={`https://images.unsplash.com/photo-${index + 1}?auto=format&fit=crop&q=80&w=150`}
                              alt="Similar Game"
                              className="w-20 h-20 object-cover rounded-lg"

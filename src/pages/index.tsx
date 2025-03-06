@@ -1,5 +1,6 @@
 import { TowerControl as GameController, Star, Users, Search, TrendingUp, Award } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Index() {
     return (
@@ -7,7 +8,7 @@ export default function Index() {
             {/* Hero Section */}
             <header className="relative overflow-hidden">
                 <div className="absolute inset-0">
-                <img
+                <Image
                     src="https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&q=80&w=2070"
                     alt="Gaming Setup"
                     className="w-full h-full object-cover opacity-20"
@@ -118,7 +119,7 @@ export default function Index() {
                     }
                 ].map((game, index) => (
                     <div key={index} className="bg-gray-800 rounded-xl overflow-hidden">
-                    <img src={game.image} alt={game.title} className="w-full h-48 object-cover" />
+                    <Image src={game.image} alt={game.title} className="w-full h-48 object-cover" />
                     <div className="p-6">
                         <h3 className="text-xl font-bold text-white mb-2">{game.title}</h3>
                         <div className="flex items-center justify-between">

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useRouter } from "next/router";
 import { Star } from 'lucide-react';
 import Layout from '@/components/Layout';
+import Image from 'next/image';
 
 const Review = () => {
     const router = useRouter();
@@ -28,7 +29,7 @@ const Review = () => {
                 
                 <div className="bg-gray-800 rounded-xl p-6 mb-8">
                 <div className="flex items-center mb-6">
-                    <img
+                    <Image
                     src="https://images.unsplash.com/photo-1642176849879-92f85770f212?auto=format&fit=crop&q=80&w=1650"
                     alt="Game"
                     className="w-24 h-24 object-cover rounded-lg mr-4"

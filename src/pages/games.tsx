@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useQuery } from "@apollo/client";
 import { LIST_GAMES } from "@/lib/queries";
-import AddGameModal from "@/components/AddGameModal";
 import GameCard from "@/components/GameCard";
 import { truncateString } from "@/helpers";
 import Layout from "@/components/Layout";
@@ -24,7 +23,6 @@ interface GamesData {
 
 export default function Games() {
   const {data, loading, error} = useQuery<GamesData>(LIST_GAMES);
-  const [openAddGameModal, setOpenAddGameModal] = useState(false);
 
   if(loading){
     return (
