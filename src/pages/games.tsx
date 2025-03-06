@@ -37,17 +37,6 @@ export default function Games() {
   if(data){
     return (
       <Layout>
-        <div className='flex justify-between items-center mb-2'>
-          <div>
-            <button type="button" className="text-white bg-black hover:bg-gray-900 focus:outline-non font-medium rounded-lg text-sm px-5 py-2.5 me-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
-            onClick={() => setOpenAddGameModal(true)}>
-              Add Game
-            </button>
-          </div>
-        </div>
-      
-        <AddGameModal openAddGameModal={openAddGameModal} setOpenAddGameModal={setOpenAddGameModal}/>
-
         {error && (
           <div className="flex items-center justify-center mt-12">
             <div className='font-bold'>
@@ -56,7 +45,7 @@ export default function Games() {
           </div>
         )}
 
-        <div className="grid grid-cols-6 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {data.games.length > 0 && data.games.map(game => 
             <GameCard
               key={game.id} 

@@ -1,6 +1,7 @@
+import { ReactNode, FC } from "react";
 import { Toaster } from "react-hot-toast";
 import Link from "next/link";
-import { ReactNode, FC } from "react";
+import { Search, TowerControl as GameController } from "lucide-react";
 
 interface ChildrenData {
     children: ReactNode;
@@ -8,25 +9,39 @@ interface ChildrenData {
 
 const Layout: FC<ChildrenData> = ({children}) => {
     return (
-        <div>
-            <nav className='flex justify-between bg-black py-3 px-10'>
-                <Link href='/games' className="text-center text-3xl font-bold text-white">Games Review</Link>
-                <div className='flex'>
-                <div className='mr-3'>
-                    <form className="max-w-md mx-auto">   
-                    <div className="relative">
-                        <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                            <svg className="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
-                            </svg>
-                        </div>
-                        <input type="search" id="default-search" className="block w-full p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" placeholder="Search" required />
+        <div className="min-h-screen bg-gray-900">
+            <header className="bg-gray-800 shadow-lg">
+                <div className="container mx-auto px-6 py-4">
+                <div className="flex items-center justify-between">
+                    <div className="flex items-center space-x-4">
+                        <GameController className="w-8 h-8 text-purple-500" />
+                        <Link href='/' className="text-2xl font-bold text-white">GameCritic</Link>
                     </div>
-                    </form>
+                    
+                    {/* Search Bar */}
+                    <div className="hidden md:flex flex-1 max-w-2xl mx-8">
+                    <div className="relative w-full">
+                        <input
+                        type="text"
+                        placeholder="Search games..."
+                        className="w-full bg-gray-700 text-white rounded-full py-2 pl-4 pr-10 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                        />
+                        <Search className="absolute right-3 top-2.5 h-5 w-5 text-gray-400" />
+                    </div>
+                    </div>
+
+                    {/* Navigation */}
+                    <nav className="hidden md:flex items-center space-x-6">
+                    <a href="#" className="text-gray-300 hover:text-white transition">Browse</a>
+                    <a href="#" className="text-gray-300 hover:text-white transition">New Releases</a>
+                    <a href="#" className="text-gray-300 hover:text-white transition">Top Rated</a>
+                    <button className="bg-purple-600 text-white px-4 py-2 rounded-full hover:bg-purple-700 transition">
+                        Sign In
+                    </button>
+                    </nav>
                 </div>
-                <button className='text-black text-sm bg-white hover:bg-gray-100 rounded-lg px-5 py-2'>Login / Register</button>
                 </div>
-            </nav>
+            </header>
             <main className="px-10 py-5">
                 <Toaster />
                 {children}
