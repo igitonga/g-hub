@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useQuery } from "@apollo/client";
 import { LIST_GAMES } from "@/lib/queries";
 import GameCard from "@/components/GameCard";
